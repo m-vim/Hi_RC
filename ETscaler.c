@@ -17,7 +17,7 @@ Writing this program helped improve my understanding of parsing command line arg
 
 int main(int argc, char*argv[]) {					//passes command line arguement to main
 
-	int notes, i;									          //declare top level variables
+	int notes, i;							//declare top level variables
 	int ismidi = 0;
 	int write_interval = 0;
 	double startval, basefreq, ratio;
@@ -26,7 +26,7 @@ int main(int argc, char*argv[]) {					//passes command line arguement to main
 
 	// check first arguement for flag options -m or -i. argc will be at least 2 
 	while (argc > 1) {
-		if (argv[1][0] == '-') {					  //detect dash signaller for optional arguements
+		if (argv[1][0] == '-') {				//detect dash signaller for optional arguements
 			flag = argv[1][1];
 			if (flag == 'm')
 				ismidi = 1;
@@ -40,10 +40,10 @@ int main(int argc, char*argv[]) {					//passes command line arguement to main
 			argv++;
 		}
 		else
-			break;									            //loop break indicates all optional flags, if any, have been read
+			break;						//loop break indicates all optional flags, if any, have been read
 	}
 
-	if (argc < 3) {									        //display error message and reiterate usage
+	if (argc < 3) {							 //display error message and reiterate usage
 		printf("Error: this program takes at least 2 arguments\n");
 		printf("Usage: ETscaler [-m][-i] N startval\n");
 		printf("[-m] is midi; [-i] is display interval\n");
@@ -61,17 +61,17 @@ int main(int argc, char*argv[]) {					//passes command line arguement to main
 	startval = atof(argv[2]);
 
 	if (ismidi){
-		if (startval > 127.0) {					    	//MIDI values are from 0 to 127
+		if (startval > 127.0) {					//MIDI values are from 0 to 127
 			printf("Error: MIDI startval must be <= 127\n");
 			return 1;
 		}
-		if (startval < 0.0) {						      //MIDI values must be positive
+		if (startval < 0.0) {					//MIDI values must be positive
 			printf("Error: MIDI startval must be >= 0\n");
 			return 1;
 		}
 	}
 	else {
-		if (startval <= 0.0) {						    //frequency must be positive
+		if (startval <= 0.0) {					//frequency must be positive
 			printf("Error: frequency startval must be positive\n");
 			return 1;
 		}
